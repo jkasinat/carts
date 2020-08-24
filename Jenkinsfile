@@ -10,21 +10,21 @@ pipeline {
     stage('build') {
       steps {
         echo 'This is build job'
-        sh 'mvn compile'
+        sh 'mvn clean compile'
            } 
     }
 
     stage('test') {
       steps {
         echo ' This is test job'
-        sh 'mvn clean test'
+        sh 'mvn test'
             }
     }
 
     stage('package') {
       steps {
         echo ' Creation of artificats '
-        sh 'mvn package -DskipTests'
+        sh 'mvn -DskipTests package'
             }
     }
 
