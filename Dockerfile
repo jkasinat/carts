@@ -2,15 +2,14 @@ FROM schoolofdevops/carts-maven
 
 WORKDIR /opt/carts
 
-COPY . .
+copy . .
 
 RUN mvn package \
-    && mv target/carts.jar /run/carts.jar \
-    && rm -rf /opt/carts/*
-
-WORKDIR /run
+    && mv target/carts.jar /run \
+    && rm -rf *
 
 EXPOSE 80
 
-CMD java -jar carts.jar --port=80
+CMD java -jar /run/carts.jar --port=80
+ 
 
